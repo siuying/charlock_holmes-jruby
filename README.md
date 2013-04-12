@@ -62,4 +62,8 @@ The first parameter is the content to transcode, the second is the source encodi
 gem install charlock_holmes-jruby
 ```
 
+## Copyright
 
+Copyright 2013 Francis Chong
+
+Licensed under the MIT License.
