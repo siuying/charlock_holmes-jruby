@@ -16,6 +16,32 @@ describe CharlockHolmes::EncodingDetector do
       detected = subject.detect 'hello', 'UTF-8'
       detected[:encoding].should == 'ISO-8859-1'
     end
+
+    MAPPING = [
+      ['repl2.cljs', 'ISO-8859-1'],
+      ['core.rkt', 'UTF-8'],
+      ['cl-messagepack.lisp', 'ISO-8859-1'],
+      ['TwigExtensionsDate.es.yml', 'UTF-8'],
+      ['AnsiGraph.psm1', 'UTF-16LE'],
+      ['laholator.py', 'UTF-8'],
+      ['mingpao.html', 'Big5'],
+      ['shift_jis.html', 'Shift_JIS']
+    ]
+
+    MAPPING.each do |mapping|
+      file, encoding, type = mapping
+      it "should detect encoding of test file #{file}" do
+        path = File.expand_path "../fixtures/#{file}", __FILE__
+        content = File.read path
+        guessed = subject.detect content
+        guessed[:encoding].should == encoding
+
+        if content.respond_to?(:force_encoding)
+          content.force_encoding guessed[:encoding]
+          content.valid_encoding?.should be_true
+        end
+      end
+    end
   end
   
   describe "#detect_all" do
