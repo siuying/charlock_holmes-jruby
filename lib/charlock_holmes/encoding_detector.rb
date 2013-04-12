@@ -1,3 +1,5 @@
+require_relative 'charset_match_ext'
+
 java_import 'com.ibm.icu.text.CharsetDetector'
 java_import 'java.io.ByteArrayInputStream'
 
