@@ -31,7 +31,7 @@ NOTE: ```CharlockHolmes::EncodingDetector.detect``` will return nil if it was un
 
 Alternatively, you can just use the detect_encoding method on the String class
 
-```
+```ruby
 require 'charlock_holmes/string'
 
 contents = File.read('test.xml')
@@ -47,8 +47,7 @@ contents.detect_encoding!
 
 Being able to detect the encoding of some arbitrary content is nice, but what you probably want is to be able to transcode that content into an encoding your application is using.
 
-```
-
+```ruby
 content = File.read('test2.txt')
 detection = CharlockHolmes::EncodingDetector.detect(content)
 utf8_encoded_content = CharlockHolmes::Converter.convert content, detection[:encoding], 'UTF-8'
