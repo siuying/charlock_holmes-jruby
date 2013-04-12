@@ -35,11 +35,8 @@ describe CharlockHolmes::EncodingDetector do
         content = File.read path
         guessed = subject.detect content
         guessed[:encoding].should == encoding
-
-        if content.respond_to?(:force_encoding)
-          content.force_encoding guessed[:encoding]
-          content.valid_encoding?.should be_true
-        end
+        content.force_encoding guessed[:encoding]
+        content.valid_encoding?.should be_true
       end
     end
   end
