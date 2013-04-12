@@ -49,7 +49,6 @@ Being able to detect the encoding of some arbitrary content is nice, but what yo
 
 ```
 
-
 content = File.read('test2.txt')
 detection = CharlockHolmes::EncodingDetector.detect(content)
 utf8_encoded_content = CharlockHolmes::Converter.convert content, detection[:encoding], 'UTF-8'
