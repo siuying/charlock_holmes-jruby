@@ -1,3 +1,5 @@
+require_relative 'version'
+require_relative "../#{CharlockHolmes::ICU_JAR_FILENAME}"
 require_relative 'charset_match_ext'
 
 java_import 'com.ibm.icu.text.CharsetDetector'
