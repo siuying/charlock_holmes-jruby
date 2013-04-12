@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.authors = ["Francis Chong"]
   s.date = Time.now.utc.strftime("%Y-%m-%d")
   s.email = %q{francis@ignition.hk}
-  s.extensions = ["ext/charlock_holmes/extconf.rb"]
+
   s.files = `git ls-files`.split("\n")
   s.homepage = %q{http://github.com/siuying/charlock_holmes_jruby}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -20,7 +20,5 @@ Gem::Specification.new do |s|
   # tests
   s.add_development_dependency 'rake-compiler', ">= 0.7.5"
   s.add_development_dependency 'rspec'
-
-  # benchmarks
-  # s.add_development_dependency 'chardet'
+  s.add_development_dependency 'rake'
 end
