@@ -1,31 +1,50 @@
-require 'icu4j-51_1.jar'
-
 java_import 'com.ibm.icu.text.CharsetDetector'
 java_import 'java.io.ByteArrayInputStream'
 
 module CharlockHolmes
   module EncodingDetector
-    module_function
+    extend self
 
-    def detect(string)
-      dect = CharsetDetector.new
-      dect.setText ByteArrayInputStream.new(string.to_java_bytes)
-      if charset_match = dect.detect()
-        charset_match.to_hash
-      else
+    def detect(string, hint=nil)
+      detector = create_detector(string, hint)
+
+      begin
+        if charset_match = detector.detect()
+          charset_match.to_hash
+        else
+          nil
+        end
+      rescue
         nil
       end
     end
 
-    def detect_all(string)
-      dect = CharsetDetector.new
-      dect.setText ByteArrayInputStream.new(string.to_java_bytes)
-      if charset_matchs = dect.detect_all()
-        charset_matchs.collect {|match| match.to_hash }
-      else
+    def detect_all(string, hint=nil)
+      detector = create_detector(string, hint)
+
+      begin
+        if charset_matchs = detector.detectAll()
+          charset_matchs.collect {|match| match.to_hash }
+        else
+          nil
+        end
+      rescue
         nil
       end
     end
 
+    def all_detectable_charsets
+      CharsetDetector.getAllDetectableCharsets().to_a
+    end
+
+    private
+    def create_detector(string, hint=nil)
+      detector = CharsetDetector.new
+      detector.setText ByteArrayInputStream.new(string.to_java_bytes)
+      detector.setDeclaredEncoding(hint)
+      detector
+    end
   end
+
+
 end
