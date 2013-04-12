@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    charlock_holmes_jruby (0.1.0)
+    charlock_holmes-jruby (0.1.0-java)
 
 GEM
   remote: https://rubygems.org/
@@ -23,7 +23,7 @@ PLATFORMS
   java
 
 DEPENDENCIES
-  charlock_holmes_jruby!
+  charlock_holmes-jruby!
   rake
   rake-compiler (>= 0.7.5)
   rspec

@@ -59,7 +59,7 @@ The first parameter is the content to transcode, the second is the source encodi
 ## Installing
 
 ```
-gem install charlock_holmes_jruby
+gem install charlock_holmes-jruby
 ```
 
 
