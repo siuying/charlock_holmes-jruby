@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.authors = ["Francis Chong"]
   s.date = Time.now.utc.strftime("%Y-%m-%d")
   s.email = %q{francis@ignition.hk}
+  s.license = 'MIT'
 
   s.files = `git ls-files`.split("\n")
   s.homepage = %q{http://github.com/siuying/charlock_holmes-jruby}
